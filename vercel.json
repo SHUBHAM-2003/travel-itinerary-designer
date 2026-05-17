@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "framework": "vite",
-  "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.ts" }
+  "builds": [
+    { "src": "api/index.ts", "use": "@vercel/node" },
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
+  ],
+  "routes": [
+    { "src": "/api/unsplash", "dest": "/api/index.ts" },
+    { "src": "/api", "dest": "/api/index.ts" },
+    { "src": "/(.*)", "dest": "/dist/$1" }
   ]
 }

@@ -41,7 +41,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/itinerary/generate", {
+      const res = await fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ rawData, provider, apiKey, model })
